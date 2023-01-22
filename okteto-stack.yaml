@@ -21,4 +21,11 @@ services:
       - /mosquitto/data
       - /mosquitto/log
 volumes:
-  volumes:
+  mongodb_data:
+    driver: local
+  mosquitto_config:
+    driver: local
+  mosquitto_data:
+    driver: local
+  mosquitto_log:
+    driver: local
