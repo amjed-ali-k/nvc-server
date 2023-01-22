@@ -13,7 +13,8 @@ jobs:
           token: ${{ secrets.OKTETO_TOKEN }}
 
       - name: Build and deploy application container to Okteto  Namespace
-        uses: okteto/okteto:latest
-        env: OKTETO_ORIGIN github_action
-        run: |
-          okteto deploy --build --wait
+        uses: addnab/docker-run-action@v3
+        with:
+          image: okteto/okteto:latest
+          run: |
+            okteto deploy --build --wait
