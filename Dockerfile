@@ -1,12 +1,9 @@
 FROM python:latest
 
-WORKDIR /app
-
 ADD ./requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
-COPY main.py main.py
-COPY app app
+COPY . .
 
 EXPOSE 8080
 
