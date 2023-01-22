@@ -22,4 +22,4 @@ jobs:
         with:
           name: nvc-server
           build: false
-          file: okteto-stack.yaml
+          file: ./okteto-stack.yaml
