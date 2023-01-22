@@ -15,7 +15,7 @@ app = FastAPI()
 
 @app.get("/", tags=["Root"])
 def get_root() -> dict:
-    return {"message": "Welcome to Napkin Vending Machine Server."}
+    return {"message": "Welcome to Napkin Vending Machine Server V2."}
 
 
 @app.get("/recipe", tags=["Recipe"])
