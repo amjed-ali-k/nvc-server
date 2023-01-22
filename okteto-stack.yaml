@@ -20,3 +20,6 @@ services:
       - /mosquitto/config
       - /mosquitto/data
       - /mosquitto/log
+volumes:
+  - mongodb
+  - mosquitto
