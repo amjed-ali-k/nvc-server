@@ -16,7 +16,7 @@ jobs:
           image: okteto/okteto:latest
           run: |
             okteto context use --token=${{ secrets.OKTETO_TOKEN }} --namespace=amjed-ali-k
-            echo 'moving to $GITHUB_WORKSPACE'
-            ls $GITHUB_WORKSPACE
-            cd $GITHUB_WORKSPACE
+            echo 'moving to ${{ env.GITHUB_WORKSPACE }}'
+            ls ${{ env.GITHUB_WORKSPACE }}
+            cd ${{ env.GITHUB_WORKSPACE }}
             okteto deploy --build --wait
