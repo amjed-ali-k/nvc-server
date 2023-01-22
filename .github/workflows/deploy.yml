@@ -8,15 +8,14 @@ jobs:
   depoly:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-      - name: Build and deploy application container to Okteto  Namespace
-        uses: addnab/docker-run-action@v3
+      - uses: actions/checkout@v2
+      - name: Set context to Okteto Cloud
+        uses: okteto/context@latest
         with:
-          image: okteto/okteto:latest
-          run: |
-            okteto context use --token=${{ secrets.OKTETO_TOKEN }} --namespace=amjed-ali-k
-            echo 'moving to ${{ env.GITHUB_WORKSPACE }}'
-            ls ${{ env.GITHUB_WORKSPACE }}
-            cd ${{ env.GITHUB_WORKSPACE }}
-            okteto deploy --build --wait
+          token: ${{ secrets.OKTETO_TOKEN }}
+      - name: Build and deploy application container to Okteto Flask Namespace
+        if: ${{ github.event_name == 'push' }}
+        uses: okteto/deploy-stack@master
+        with:
+          name: amjed-ali-k
+          build: true
