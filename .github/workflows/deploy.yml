@@ -2,7 +2,7 @@ name: NVC Deployment Action
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   depoly:
