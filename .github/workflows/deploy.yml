@@ -8,13 +8,10 @@ jobs:
   depoly:
     runs-on: ubuntu-latest
     steps:
-      - uses: okteto/context@latest
-        with:
-          token: ${{ secrets.OKTETO_TOKEN }}
-
       - name: Build and deploy application container to Okteto  Namespace
         uses: addnab/docker-run-action@v3
         with:
           image: okteto/okteto:latest
           run: |
+            okteto context use --token=${{ secrets.OKTETO_TOKEN }} --namespace=amjed-ali-k
             okteto deploy --build --wait
