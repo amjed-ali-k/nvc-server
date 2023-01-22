@@ -1,0 +1,16 @@
+name: NVC Deployment Action
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  depoly:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build and deploy application container to Okteto  Namespace
+      if: ${{ github.event_name == 'push' }}
+      uses: okteto/deploy-stack@master
+      with:
+        name: nvc-server
+        build: true
