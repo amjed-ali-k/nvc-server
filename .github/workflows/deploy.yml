@@ -13,8 +13,5 @@ jobs:
           token: ${{ secrets.OKTETO_TOKEN }}
 
       - name: Build and deploy application container to Okteto  Namespace
-        uses: okteto/deploy-stack@latest
-        with:
-          namespace: amjed-ali-k
-          name: nvc-server
-          build: true
+        run: |
+          okteto deploy --build --wait
