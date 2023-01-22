@@ -2,11 +2,12 @@ FROM python:latest
 
 WORKDIR /app
 
-ADD . .
+ADD ./requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
 
 COPY ./app /app
+
+EXPOSE 8080
 
 CMD ["python3", "main.py"]
