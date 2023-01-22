@@ -15,9 +15,11 @@ jobs:
       - uses: okteto/namespace@latest
         with:
           namespace: amjed-ali-k
+
       - name: Build and deploy application container to Okteto  Namespace
         if: ${{ github.event_name == 'push' }}
         uses: okteto/deploy-stack@latest
         with:
           name: nvc-server
-          build: true
+          build: false
+          file: okteto-stack.yaml
