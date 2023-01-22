@@ -11,3 +11,12 @@ services:
       - 27017
     volumes:
       - /bitnami/mongodb
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - /mosquitto/config
+      - /mosquitto/data
+      - /mosquitto/log
