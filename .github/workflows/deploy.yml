@@ -16,5 +16,5 @@ jobs:
           image: okteto/okteto:latest
           run: |
             okteto context use --token=${{ secrets.OKTETO_TOKEN }} --namespace=amjed-ali-k
-            ls
+            cd ${{GITHUB_WORKSPACE}}
             okteto deploy --build --wait
