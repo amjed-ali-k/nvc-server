@@ -2,7 +2,7 @@ name: NVC Deployment Action
 
 on:
   push:
-    branches: [other]
+    branches: [main]
 
 jobs:
   depoly:
@@ -15,7 +15,7 @@ jobs:
           token: ${{ secrets.OKTETO_TOKEN }}
       - name: Build and deploy application container to Okteto Flask Namespace
         if: ${{ github.event_name == 'push' }}
-        uses: amjed-ali-k/deploy-stack@latest
+        uses: amjed-ali-k/deploy-stack@v0.0.2
         with:
           name: amjed-ali-k
           build: true
