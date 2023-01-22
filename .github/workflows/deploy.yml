@@ -8,11 +8,14 @@ jobs:
   depoly:
     runs-on: ubuntu-latest
     steps:
-      - name: Build and deploy application container to Okteto  Namespace
-        uses: addnab/docker-run-action@v3
+      - uses: okteto/context@latest
         with:
-          image: okteto/okteto:latest
-          run: |
-            okteto context use --token=${{ secrets.OKTETO_TOKEN }} --namespace=amjed-ali-k
-            ls
-            okteto deploy --build --wait
+          token: ${{ secrets.OKTETO_TOKEN }}
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: Build and deploy application container to Okteto  Namespace
+        uses: okteto/deploy-stack@latest
+        with:
+          namespace: amjed-ali-k
+          name: nvc-server
+          build: true
